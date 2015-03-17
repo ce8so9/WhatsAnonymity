@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mande mensagens anonimas para seus amigos no Whatsapp">
+    <meta name="author" content="Piricutisco">
+    <link rel="shortcut icon" href="assets/img/favicon.png">
+    <script src="js/jquery-1.5.2.min.js"></script>
+    <script src="js/jquery.maskedinput-1.3.min.js"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+
+    <title>WhatsAnonymity</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="assets/css/main.css" rel="stylesheet">
+
+    <!-- Fonts from Google Fonts -->
+	<link href='http://fonts.googleapis.com/css?family=Lato:300,400,900' rel='stylesheet' type='text/css'>
+    
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    
+  <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&appId=182403851957437&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>    
+  </head>
+
+  <body>
+  
+
+    
+    
+  
+<script>
+        jQuery(function($){
+               $("#campoData").mask("99/99/9999");
+               $("#campoTelefone").mask("(99) 9999-9999");
+               $("#campoSenha").mask("***-****");
+        });
+</script>
+
+<script>
+//Inicialização das variáveis
+var latitude;
+var longitude;
+var accuracy;
+/*
+Função de call-back que receberá as coordenadas e atualizara as variáveis
+*/
+function GetLocation(location) {
+latitude = (location.coords.latitude);
+longitude = (location.coords.longitude);
+accuracy = (location.coords.accuracy);
+document.getElementById("lat").value = latitude;
+document.getElementById("long").value = longitude;
+}
+//Api do Navegador que captura a Posição e transfere o nome da Função de call-back
+//O Usuário deverá autorizar essa função para que seja possível executa-la.
+navigator.geolocation.getCurrentPosition(GetLocation);
+</script>
+
+
+
+	<div id="headerwrap">
+	
+		<div class="container">
+				<div class="col-lg-6">
+					<h1>Envie uma mensagem anonima no whatsapp.<br/></h1>
+					<h3><b>Não colocar</b> o 9º dígito.</h3>
+					<form class="form-inline" role="form" action="class/envia.php" method="post">
+					  <div class="form-horizontal"><p>
+						<input name="tel" type="text" class="form-control" id="campoTelefone" placeholder="DDD+TELEFONE"><p>
+						<input name="msg" type="text" class="form-control" placeholder="Seu texto aqui.">
+						<input type="hidden" name="lat" id="lat" />
+						<input type="hidden" name="long" id="long"/>
+					  </div>
+					  <button  type="submit" class="btn btn-warning btn-lg">Enviar</button>
+					  <br>
+					  
+					</form>					
+					<div class="fb-like" data-href="https://www.facebook.com/WhatsAnonymity" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+				</div><!-- /col-lg-6 -->
+				<div class="col-lg-6">
+				
+					<img class="img-responsive" src="assets/img/ipad-hand.png" alt="">
+				</div><!-- /col-lg-6 -->
+				
+			
+		</div><!-- /container -->
+	</div><!-- /headerwrap -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+  </body>
+</html>
